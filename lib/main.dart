@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
         '/news': (context) => NewsScreen(),
         '/tasks': (context) => TaskListScreen(),
         '/currency': (context) => CurrencyConverterScreen(),
+        '/podcast': (context) => PodcastScreen(),
       },
     );
   }
@@ -86,7 +87,7 @@ class NewsScreen extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   leading: Icon(Icons.article),
-                  title: Text('Título de la noticia'),
+                  title: Text('Título de la noticia 1'),
                   subtitle: Text('Descripción breve de la noticia.'),
                 ),
                 Padding(
@@ -108,6 +109,61 @@ class NewsScreen extends StatelessWidget {
               ],
             ),
           ),
+          Card(
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.article),
+                  title: Text('Título de la noticia 2'),
+                  subtitle: Text('Descripción breve de la noticia.'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text('Detalles adicionales de la noticia.'),
+                ),
+                ButtonBar(
+                  children: <Widget>[
+                    TextButton(
+                      child: const Text('Boton 1'),
+                      onPressed: () { /* ... */ },
+                    ),
+                    TextButton(
+                      child: const Text('Boton 2'),
+                      onPressed: () { /* ... */ },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Card(
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.article),
+                  title: Text('Título de la noticia 3'),
+                  subtitle: Text('Descripción breve de la noticia.'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text('Detalles adicionales de la noticia.'),
+                ),
+                ButtonBar(
+                  children: <Widget>[
+                    TextButton(
+                      child: const Text('Boton 1'),
+                      onPressed: () { /* ... */ },
+                    ),
+                    TextButton(
+                      child: const Text('Boton 2'),
+                      onPressed: () { /* ... */ },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          //Se copia el card anterior y se agrega en este espacio en caso de necesitar agregar mas noticias
         ],
       ),
     );
@@ -205,6 +261,84 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
             Text(
               'Lps: $result',
               style: TextStyle(fontSize: 20),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PodcastScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Podcast'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Card(
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.music_note),
+                    title: Text('Iris'),
+                    subtitle: Text('Goo Goo Dolls'),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      TextButton(
+                        child: const Text('Favorito'),
+                        onPressed: () { /* ... */ },
+                      ),
+                      TextButton(
+                        child: const Text('Añadir a Lista'),
+                        onPressed: () { /* ... */ },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Slider(
+              value: 0.2,
+              onChanged: (value) {},
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.skip_previous),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Icon(Icons.play_arrow),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Icon(Icons.skip_next),
+                  onPressed: () {},
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('Repetir'),
+                Checkbox(
+                  value: true,
+                  onChanged: (value) {false;},
+                ),
+                Text('Mezclar'),
+                Checkbox(
+                  value: false,
+                  onChanged: (value) {true;},
+                ),
+              ],
             ),
           ],
         ),
