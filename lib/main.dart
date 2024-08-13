@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomeScreen(),
         '/news': (context) => NewsScreen(),
-        
+        '/tasks': (context) => TaskListScreen(),
+    
       },
     );
   }
@@ -95,11 +96,11 @@ class NewsScreen extends StatelessWidget {
                 ButtonBar(
                   children: <Widget>[
                     TextButton(
-                      child: const Text('BUTTON 1'),
+                      child: const Text('Boton 1'),
                       onPressed: () { /* ... */ },
                     ),
                     TextButton(
-                      child: const Text('BUTTON 2'),
+                      child: const Text('Boton 2'),
                       onPressed: () { /* ... */ },
                     ),
                   ],
@@ -108,6 +109,33 @@ class NewsScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class TaskListScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Lista de Tareas'),
+      ),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Icon(Icons.person),
+            title: Text('Ricardo Flores 62311512'),
+            subtitle: Text('Tienes una nueva tarea'),
+            trailing: Icon(Icons.star_border),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
