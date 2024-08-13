@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomeScreen(),
         '/news': (context) => NewsScreen(),
         '/tasks': (context) => TaskListScreen(),
-    
+        '/currency': (context) => CurrencyConverterScreen(),
       },
     );
   }
@@ -136,6 +136,78 @@ class TaskListScreen extends StatelessWidget {
         onPressed: () {
         },
         child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class CurrencyConverterScreen extends StatefulWidget {
+  @override
+  _CurrencyConverterScreenState createState() => _CurrencyConverterScreenState();
+}
+
+class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
+  String selectedCurrency = 'USD';
+  double rate = 24.68;
+  double result = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cambio de Moneda'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedCurrency = 'USD';
+                      rate = 24.68;
+                    });
+                  },
+                  child: Text('Dólar'),
+                ),
+                SizedBox(width: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedCurrency = 'EUR';
+                      rate = 28.50;
+                    });
+                  },
+                  child: Text('Euro'),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Tasa de Cambio: $rate',
+              style: TextStyle(fontSize: 20),
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'USD:',
+              ),
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                setState(() {
+                  result = double.parse(value) * rate;
+                });
+              },
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Lps: $result',
+              style: TextStyle(fontSize: 20),
+            ),
+          ],
+        ),
       ),
     );
   }
